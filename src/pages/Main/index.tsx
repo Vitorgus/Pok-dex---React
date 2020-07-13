@@ -50,8 +50,7 @@ const Main: React.FC = () => {
     try {
       setLoading(true);
       const response = await api.get<Pokemon>(`pokemon/${newPoke}`);
-      setLoading(false);
-
+      
       const pokeInfo = response.data;
 
       setNewError("");
@@ -59,6 +58,8 @@ const Main: React.FC = () => {
       setPokemon("");
     } catch (e) {
       setNewError("Erro na busca do Pokémon citado");
+      
+    } finally {
       setLoading(false);
     }
   }
